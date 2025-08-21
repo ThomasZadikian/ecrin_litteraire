@@ -9,3 +9,8 @@ class Livre(BaseModel):
     # Modify to UUID later if needed
     auteur: str
     date_publication: datetime
+
+class LivreCreationSchema(BaseModel):
+    titre: str
+    contenu: str
+    auteur: str
