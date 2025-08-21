@@ -6,7 +6,6 @@ class LivreRepository(ABC):
     """
     Interface pour le dépôt de livres.
     """
-
     @abstractmethod
     def sauvegarder(self, livre : Livre) -> None:
         """Sauvegarde un livre dans le dépôt."""

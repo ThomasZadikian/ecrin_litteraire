@@ -3,11 +3,11 @@ from src.domain.livre_repository import LivreRepository
 from uuid import UUID
 
 class RecupererUnLivre:
-    def __init__(self, LivreRepository: LivreRepository):
+    def __init__(self, livre_repository: LivreRepository):
         """
         Initialise le cas d'utilisation pour récupérer un livre.
         """
-        self.livre_repository = LivreRepository
+        self.livre_repository = livre_repository
         pass
 
     def executer(self, livre_id: UUID) -> Livre | None : 
