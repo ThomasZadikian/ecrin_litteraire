@@ -1,10 +1,10 @@
 
 from sqlalchemy import Column, String, DateTime
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
-class Base(declarative_base):
+class Base(DeclarativeBase):
     pass
 
 class LivreDB(Base):
