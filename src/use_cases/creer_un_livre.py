@@ -8,7 +8,7 @@ class CreerUnLivre:
     def __init__ (self, livre_repository: LivreRepository):
         self.livre_repository = livre_repository
 
-    def executer(self, livre_data: LivreCreationSchema) -> Livre: 
+    async def executer(self, livre_data: LivreCreationSchema) -> Livre: 
         nouveau_livre = Livre(
             id=uuid.uuid4(),
             titre=livre_data.titre, 
@@ -16,5 +16,5 @@ class CreerUnLivre:
             auteur=livre_data.auteur,
             date_publication=datetime.now()
         )
-        self.livre_repository.sauvegarder(nouveau_livre)
+        await self.livre_repository.sauvegarder(nouveau_livre)
         return nouveau_livre

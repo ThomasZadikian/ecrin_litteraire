@@ -1,6 +1,6 @@
 from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.ext.asyncio import AsyncSession, session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.domain.livre import Livre, LivreCreationSchema
 from src.domain.livre_repository import LivreRepository
@@ -27,7 +27,7 @@ async def recuperer_livre_par_id(
     use_case = RecupererUnLivre(livre_repository)
     livre = await use_case.executer(livre_id)
     if not livre:
-        raise HTTPException(status_code=404, detail="Livre non trouvé")
+        raise HTTPException(status_code=404, detail=f"Livre avec l'id : {livre_id} non trouvé")
     return livre
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=Livre)
@@ -36,7 +36,6 @@ async def creer_un_livre(
     livre_repository: LivreRepository = Depends(get_livre_repository)
 ):
     use_case = CreerUnLivre(livre_repository)
-    nouveau_livre =  use_case.executer(livre_data)
+    nouveau_livre =  await use_case.executer(livre_data)
     await livre_repository.session.commit()
-    await livre_repository.session.refresh(nouveau_livre)
     return nouveau_livre
