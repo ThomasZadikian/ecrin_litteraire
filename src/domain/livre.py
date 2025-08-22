@@ -6,6 +6,10 @@ class Livre(BaseModel):
     id: UUID
     titre: str
     contenu: str
-    # Modify to UUID later if needed
     auteur: str
     date_publication: datetime
+
+class LivreCreationSchema(BaseModel):
+    titre: str
+    contenu: str
+    auteur: str
