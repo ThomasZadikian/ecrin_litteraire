@@ -10,11 +10,12 @@ class RecupererUnLivre:
         self.livre_repository = livre_repository
         pass
 
-    def executer(self, livre_id: UUID) -> Livre | None : 
+    async def executer(self, livre_id: UUID) -> Livre | None : 
         """
         Args:
             livre_id (UUID): L'identifiant du livre à récupérer.
         returns:
             Livre | None: Le livre trouvé ou None si non trouvé.
         """
-        return self.livre_repository.trouver_par_id(livre_id)
+        livre = await self.livre_repository.trouver_par_id(livre_id)
+        return livre
