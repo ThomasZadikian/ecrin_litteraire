@@ -6,7 +6,10 @@ from src.domain.livre import Livre, LivreCreationSchema
 from src.domain.livre_repository import LivreRepository
 from src.use_cases.recuperer_un_livre import RecupererUnLivre
 from src.use_cases.creer_un_livre import CreerUnLivre
-
+from src.domain.livre import LivreUpdateSchema
+from src.use_cases.mettre_a_jour_un_livre import MettreAJourUnLivre
+from src.use_cases.supprimer_un_livre import SupprimerUnLivre
+from src.domain.exceptions import LivreNotFoundError
 from src.infrastructure.persistance.sqlalchemy_livre_repository import SQLAlchemyLivreRepository
 from src.infrastructure.persistance.database import get_session
 
@@ -39,3 +42,29 @@ async def creer_un_livre(
     nouveau_livre =  await use_case.executer(livre_data)
     await livre_repository.session.commit()
     return nouveau_livre
+
+@router.put("/{livre_id}", response_model=Livre)
+async def mettre_a_jour_un_livre(
+    livre_id: UUID,
+    livre_data: LivreUpdateSchema,
+    livre_repository: LivreRepository = Depends(get_livre_repository)
+):
+
+    use_case = MettreAJourUnLivre(livre_repository)
+    livre_mis_a_jour = await use_case.executer(livre_id, livre_data)
+    
+    if not livre_mis_a_jour:
+        raise HTTPException(status_code=404, detail=f"Livre avec l'id : {livre_id} non trouvé")
+    
+    return livre_mis_a_jour
+
+@router.delete("/{livre_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def supprimer_un_livre(
+    livre_id: UUID,
+    livre_repository: LivreRepository = Depends(get_livre_repository)
+):
+    use_case = SupprimerUnLivre(livre_repository)
+    try:
+        await use_case.executer(livre_id)
+    except LivreNotFoundError as e:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
