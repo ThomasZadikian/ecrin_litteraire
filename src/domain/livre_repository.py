@@ -16,4 +16,13 @@ class LivreRepository(ABC):
         """Trouve un livre par son identifiant."""
         pass
 
+    @abstractmethod
+    def mettre_a_jour(self, livre : Livre) -> None:
+        """Met à jour un livre existant dans le dépôt."""
+        pass
+
+    @abstractmethod
+    async def supprimer(self, livre: Livre) -> None:
+        """Supprime un livre du dépôt par son identifiant."""
+        pass
 

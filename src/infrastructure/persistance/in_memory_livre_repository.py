@@ -24,3 +24,21 @@ class InMemoryLivreRepository(LivreRepository):
             Livre | None: Le livre trouvé ou None si non trouvé.
         """
         return self.data.get(id)
+    
+    def mettre_a_jour(self, livre: Livre) -> None: 
+        """
+        Met à jour un livre existant dans le dépôt en mémoire.
+        Args:
+            livre (Livre): Le livre à mettre à jour.
+        """
+        if livre.id in self.data:
+            self.data[livre.id] = livre
+
+    def supprimer(self, id: UUID) -> None:
+        """
+        Supprime un livre du dépôt en mémoire par son identifiant.
+        Args:
+            id (UUID): L'identifiant du livre à supprimer.
+        """
+        if id in self.data:
+            del self.data[id]
