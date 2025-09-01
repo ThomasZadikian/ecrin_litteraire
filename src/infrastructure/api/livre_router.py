@@ -33,6 +33,17 @@ async def recuperer_livre_par_id(
         raise HTTPException(status_code=404, detail=f"Livre avec l'id : {livre_id} non trouvé")
     return livre
 
+@router.get("/auteur/{auteur_name}", response_model=list[Livre])
+async def recuperer_livre_par_auteur(
+    auteur_name: str,
+    livre_repository: LivreRepository = Depends(get_livre_repository)
+):
+    use_case = RecupererUnLivre(livre_repository)
+    livres = await use_case.executer(auteur_name)
+    if not livres:
+        raise HTTPException(status_code=404, detail=f"Aucun livre trouvé pour l'auteur : {auteur_name}")
+    return livres
+
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=Livre)
 async def creer_un_livre(
     livre_data: LivreCreationSchema,

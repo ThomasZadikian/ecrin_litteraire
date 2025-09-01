@@ -19,3 +19,18 @@ class RecupererUnLivre:
         """
         livre = await self.livre_repository.trouver_par_id(livre_id)
         return livre
+    
+class recuperer_un_livre_par_auteur:
+    def __init__(self, livre_repository: LivreRepository):
+        self.livre_repository = livre_repository
+        pass
+    
+    async def executer(self, auteur_name : str) -> list[Livre] | None:
+        """
+        Args:
+            auteur_name (str): Le nom de l'auteur dont on veut récupérer les livres.
+        returns:
+            list[Livre] | None: La liste des livres trouvés ou None si aucun trouvé.
+        """
+        livres = await self.livre_repository.trouver_par_auteur(auteur_name)
+        return livres
