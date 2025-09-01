@@ -15,6 +15,17 @@ class InMemoryLivreRepository(LivreRepository):
 
     async def trouver_par_id(self, livre_id: UUID) -> Livre | None:
         return self._data.get(livre_id)
+    
+    async def trouver_par_auteur(self, auteur: str) -> list[Livre]:
+        """
+        Trouve tous les livres d'un auteur donné.
+        Retourne une liste vide si aucun livre n'est trouvé.
+        """
+        livres_trouves = [
+            livre for livre in self._data.values()
+            if livre.auteur == auteur
+        ]
+        return livres_trouves
         
     async def mettre_a_jour(self, livre: Livre) -> None:
         if livre.id in self._data:

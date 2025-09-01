@@ -1,4 +1,5 @@
 from uuid import UUID
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.domain.livre import Livre
@@ -25,6 +26,15 @@ class SQLAlchemyLivreRepository(LivreRepository):
         if result_db is None:
             return None
         return Livre.model_validate(result_db)
+    
+    async def trouver_par_auteur(self, auteur_name: str) -> list[Livre] | None: 
+        result_db = await self.session.execute(
+            select(LivreDB).where(LivreDB.auteur == auteur_name)
+        )
+        livres_db = result_db.scalars().all()
+        if not livres_db:
+            return None
+        return [Livre.model_validate(livre) for livre in livres_db]
 
     async def mettre_a_jour(self, livre: Livre) -> None:
         livre_db = await self.session.get(LivreDB, livre.id)

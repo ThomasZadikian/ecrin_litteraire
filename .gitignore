@@ -1,13 +1,43 @@
-# Python artifacts
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# Fichiers Système d'Exploitation
+.DS_Store
+Thumbs.db
 
-# Virtual environment
+# Environnement Virtuel
 .venv/
 venv/
 ENV/
 
-# Database files
+# Artefacts Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+pip-wheel-metadata/
+.installed.cfg
+
+# Fichiers de Tests
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Base de Données
+# (Même si nous utilisons Docker, c'est une bonne pratique de l'inclure)
 *.sqlite3
+*.db
+
+# Fichiers d'Environnement (TRÈS IMPORTANT)
+# Ne jamais commiter les secrets (clés d'API, mots de passe de BDD)
+.env
+.env.*
+!/.env.example
+
+# Configuration IDE / Éditeur
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

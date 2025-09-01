@@ -17,6 +17,11 @@ class LivreRepository(ABC):
         pass
 
     @abstractmethod
+    def trouver_par_auteur(self, auteur_name:str) -> list[Livre] | None: 
+        """Trouve des livres par le nom de l'auteur."""
+        pass
+
+    @abstractmethod
     def mettre_a_jour(self, livre : Livre) -> None:
         """Met à jour un livre existant dans le dépôt."""
         pass
