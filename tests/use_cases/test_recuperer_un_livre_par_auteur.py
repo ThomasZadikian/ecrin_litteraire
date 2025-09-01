@@ -4,7 +4,7 @@ import uuid
 
 from domain.livre import Livre
 from domain.livre_repository import LivreRepository
-from use_cases.recuperer_un_livre import recuperer_un_livre_par_auteur
+from use_cases.recuperer_un_livre import RecupererLivreParAuteur
 from infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
 
 @pytest.mark.asyncio
@@ -31,7 +31,7 @@ async def test_recuperer_un_livre_par_auteur():
 
     repo = InMemoryLivreRepository()
 
-    use_case  = recuperer_un_livre_par_auteur(repo)
+    use_case  = RecupererLivreParAuteur(repo)
 
     await repo.sauvegarder(livre_1)
     await repo.sauvegarder(livre_2)

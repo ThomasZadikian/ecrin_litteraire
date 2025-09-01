@@ -20,7 +20,7 @@ class RecupererUnLivre:
         livre = await self.livre_repository.trouver_par_id(livre_id)
         return livre
     
-class recuperer_un_livre_par_auteur:
+class RecupererLivreParAuteur:
     def __init__(self, livre_repository: LivreRepository):
         self.livre_repository = livre_repository
         pass

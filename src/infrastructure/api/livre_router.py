@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.domain.livre import Livre, LivreCreationSchema
 from src.domain.livre_repository import LivreRepository
 from src.use_cases.recuperer_un_livre import RecupererUnLivre
+from src.use_cases.recuperer_un_livre import RecupererLivreParAuteur
 from src.use_cases.creer_un_livre import CreerUnLivre
 from src.domain.livre import LivreUpdateSchema
 from src.use_cases.mettre_a_jour_un_livre import MettreAJourUnLivre
@@ -33,12 +34,12 @@ async def recuperer_livre_par_id(
         raise HTTPException(status_code=404, detail=f"Livre avec l'id : {livre_id} non trouvé")
     return livre
 
-@router.get("/auteur/{auteur_name}", response_model=list[Livre])
+@router.get("/", response_model=list[Livre])
 async def recuperer_livre_par_auteur(
     auteur_name: str,
     livre_repository: LivreRepository = Depends(get_livre_repository)
 ):
-    use_case = RecupererUnLivre(livre_repository)
+    use_case = RecupererLivreParAuteur(livre_repository)
     livres = await use_case.executer(auteur_name)
     if not livres:
         raise HTTPException(status_code=404, detail=f"Aucun livre trouvé pour l'auteur : {auteur_name}")
