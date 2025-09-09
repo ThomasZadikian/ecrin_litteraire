@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .utilisateur import Utilisateur
+from src.domain.model.utilisateur import Utilisateur
 
 class UtilisateurRepository(ABC): 
     @abstractmethod

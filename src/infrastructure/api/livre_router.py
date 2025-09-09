@@ -2,12 +2,12 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.domain.livre import Livre, LivreCreationSchema
-from src.domain.livre_repository import LivreRepository
+from domain.model.livre import Livre, LivreCreationSchema
+from domain.repository.livre_repository import LivreRepository
 from src.use_cases.livre.recuperer_un_livre import RecupererUnLivre
 from src.use_cases.livre.recuperer_un_livre import RecupererLivreParAuteur
 from src.use_cases.livre.creer_un_livre import CreerUnLivre
-from src.domain.livre import LivreUpdateSchema
+from domain.model.livre import LivreUpdateSchema
 from src.use_cases.livre.mettre_a_jour_un_livre import MettreAJourUnLivre
 from src.use_cases.livre.supprimer_un_livre import SupprimerUnLivre
 from src.domain.exceptions import LivreNotFoundError

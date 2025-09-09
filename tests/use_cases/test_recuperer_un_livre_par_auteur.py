@@ -2,10 +2,10 @@ import pytest
 from datetime import datetime
 import uuid
 
-from domain.livre import Livre
-from domain.livre_repository import LivreRepository
-from use_cases.livre.recuperer_un_livre import RecupererLivreParAuteur
-from infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
+from src.domain.model.livre import Livre
+from src.domain.repository.livre_repository import LivreRepository
+from src.use_cases.livre.recuperer_un_livre import RecupererLivreParAuteur
+from src.infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
 
 @pytest.mark.asyncio
 async def test_recuperer_un_livre_par_auteur():

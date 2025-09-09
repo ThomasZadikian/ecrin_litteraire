@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.use_cases.utilisateurs.creer_utilisateur import CreerUtilisateur
-from src.domain.utilisateur_repository import UtilisateurRepository
-from src.domain.utilisateur import Utilisateur, UtilisateurCreationSchema
+from domain.repository.utilisateur_repository import UtilisateurRepository
+from domain.model.utilisateur import Utilisateur, UtilisateurCreationSchema
 from src.use_cases.utilisateurs.recupere_un_utilisateur import RecupererUnUtilisateur
 from src.use_cases.utilisateurs.lister_tout_les_utilisateurs import ListerToutLesUtilisateurs
 from src.infrastructure.persistance.database import get_session

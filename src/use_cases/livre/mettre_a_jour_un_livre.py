@@ -1,6 +1,6 @@
 from uuid import UUID
-from src.domain.livre import Livre, LivreUpdateSchema
-from src.domain.livre_repository import LivreRepository
+from domain.model.livre import Livre, LivreUpdateSchema
+from domain.repository.livre_repository import LivreRepository
 
 class MettreAJourUnLivre:
     def __init__(self, livre_repository: LivreRepository):

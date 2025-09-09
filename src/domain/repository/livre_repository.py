@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from src.domain.livre import Livre
+from src.domain.model.livre import Livre
 from uuid import UUID
 
 class LivreRepository(ABC):

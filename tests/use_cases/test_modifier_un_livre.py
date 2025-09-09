@@ -2,10 +2,10 @@ import pytest
 import uuid
 from datetime import datetime
 
-from use_cases.livre.recuperer_un_livre import RecupererUnLivre
-from use_cases.livre.mettre_a_jour_un_livre import MettreAJourUnLivre
-from infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
-from domain.livre import Livre, LivreUpdateSchema
+from src.use_cases.livre.recuperer_un_livre import RecupererUnLivre
+from src.use_cases.livre.mettre_a_jour_un_livre import MettreAJourUnLivre
+from src.infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
+from src.domain.model.livre import Livre, LivreUpdateSchema
 
 @pytest.mark.asyncio
 async def test_modifier_un_livre_avec_id_valide(): 

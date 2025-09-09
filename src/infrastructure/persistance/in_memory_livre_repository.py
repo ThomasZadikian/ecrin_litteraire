@@ -1,6 +1,6 @@
 from uuid import UUID
-from src.domain.livre import Livre
-from src.domain.livre_repository import LivreRepository
+from domain.model.livre import Livre
+from domain.repository.livre_repository import LivreRepository
 
 class InMemoryLivreRepository(LivreRepository):
     """

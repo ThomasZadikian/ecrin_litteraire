@@ -1,7 +1,7 @@
 import uuid 
 import pytest
 
-from src.domain.utilisateur import Utilisateur
+from src.domain.model.utilisateur import Utilisateur
 from src.infrastructure.persistance.in_memory_utilisateur_repository import InMemoryUtilisateurRepository
 
 @pytest.mark.asyncio
