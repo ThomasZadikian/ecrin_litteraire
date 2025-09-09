@@ -14,3 +14,6 @@ class InMemoryUtilisateurRepository:
 
     async def trouver_un_utilisateur_par_id(self, utilisateur_id: UUID) -> Utilisateur | None: 
         return self.data.get(utilisateur_id)
+    
+    async def lister_tout_les_utilisateurs(self) -> list[Utilisateur]: 
+        return list(self.data.values())
