@@ -5,3 +5,7 @@ class UtilisateurRepository(ABC):
     @abstractmethod
     async def trouver_par_email(self, email:str) -> Utilisateur | None:
         pass
+
+    @abstractmethod
+    async def sauvegarder_un_utilisateur(self, utilisateur: Utilisateur, hashed_password: str) -> None:
+        pass

@@ -4,7 +4,7 @@ import uuid
 
 from domain.livre import Livre
 from domain.livre_repository import LivreRepository
-from use_cases.recuperer_un_livre import RecupererLivreParAuteur
+from use_cases.livre.recuperer_un_livre import RecupererLivreParAuteur
 from infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
 
 @pytest.mark.asyncio

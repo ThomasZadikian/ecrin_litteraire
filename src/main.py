@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from src.infrastructure.api import livre_router, auth_router
+from src.infrastructure.api import livre_router, auth_router, user_router
 
 app = FastAPI(
     title="Écrin Littéraire",
@@ -9,6 +9,7 @@ app = FastAPI(
 
 app.include_router(livre_router.router)
 app.include_router(auth_router.router)
+app.include_router(user_router.router)
 
 @app.get("/", tags=["Root"])
 def read_root():

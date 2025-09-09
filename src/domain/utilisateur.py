@@ -7,12 +7,12 @@ class Utilisateur(BaseModel):
     id : UUID
     prenom : str
     nom_de_famille : str
-    date_de_naissance : datetime
+    date_de_naissance : str
     email : str
     
 class UtilisateurCreationSchema(BaseModel): 
     prenom : str
     nom_de_famille : str
-    date_de_naissance : datetime
+    date_de_naissance : str
     email : str
-    mot_de_passe : str
+    mot_de_passe : str 

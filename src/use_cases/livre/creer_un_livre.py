@@ -17,4 +17,4 @@ class CreerUnLivre:
             date_publication=datetime.now()
         )
         await self.livre_repository.sauvegarder(nouveau_livre)
-        return nouveau_livre
+        return nouveau_livre 

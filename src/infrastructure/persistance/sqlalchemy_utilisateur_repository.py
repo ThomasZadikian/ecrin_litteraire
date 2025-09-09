@@ -24,3 +24,15 @@ class SQLAlchemyUtilisateurRepository(UtilisateurRepository):
             select(UtilisateurDB).where(UtilisateurDB.email == email)
         )
         return result.scalar_one_or_none()
+    
+    async def sauvegarder_un_utilisateur(self, utilisateur: Utilisateur, hashed_password: str) -> None :
+        utilisateur_db = UtilisateurDB(
+            id= utilisateur.id, 
+            prenom = utilisateur.prenom, 
+            nom_de_famille = utilisateur.nom_de_famille, 
+            date_de_naissance = utilisateur.date_de_naissance, 
+            email = utilisateur.email, 
+            mot_de_passe_hache = hashed_password
+        )
+        self.session.add(utilisateur_db)
+        await self.session.flush()

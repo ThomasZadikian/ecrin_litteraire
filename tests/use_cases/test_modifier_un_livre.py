@@ -2,8 +2,8 @@ import pytest
 import uuid
 from datetime import datetime
 
-from use_cases.recuperer_un_livre import RecupererUnLivre
-from use_cases.mettre_a_jour_un_livre import MettreAJourUnLivre
+from use_cases.livre.recuperer_un_livre import RecupererUnLivre
+from use_cases.livre.mettre_a_jour_un_livre import MettreAJourUnLivre
 from infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
 from domain.livre import Livre, LivreUpdateSchema
 
