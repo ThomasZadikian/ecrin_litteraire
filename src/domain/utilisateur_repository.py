@@ -13,3 +13,7 @@ class UtilisateurRepository(ABC):
     @abstractmethod
     async def trouver_un_utilisateur_par_id(self, id) -> Utilisateur | None: 
         pass
+
+    @abstractmethod 
+    async def lister_tout_les_utilisateurs(self) -> list[Utilisateur]:
+        pass

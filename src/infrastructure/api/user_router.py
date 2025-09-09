@@ -5,6 +5,7 @@ from src.use_cases.utilisateurs.creer_utilisateur import CreerUtilisateur
 from src.domain.utilisateur_repository import UtilisateurRepository
 from src.domain.utilisateur import Utilisateur, UtilisateurCreationSchema
 from src.use_cases.utilisateurs.recupere_un_utilisateur import RecupererUnUtilisateur
+from src.use_cases.utilisateurs.lister_tout_les_utilisateurs import ListerToutLesUtilisateurs
 from src.infrastructure.persistance.database import get_session
 from src.infrastructure.persistance.sqlalchemy_utilisateur_repository import SQLAlchemyUtilisateurRepository
 
@@ -36,3 +37,11 @@ async def recuperer_un_utilisateur(
     if not utilisateur:
         raise HTTPException(status_code=404, detail="Utilisateur non trouvé")
     return utilisateur
+
+@router.get("/", response_model=list[Utilisateur])
+async def lister_tout_les_utilisateurs(
+    utilisateur_repository: UtilisateurRepository = Depends(get_utilisateur_repository)
+):
+    use_case = ListerToutLesUtilisateurs(utilisateur_repository)
+    utilisateurs = await use_case.executer()
+    return utilisateurs

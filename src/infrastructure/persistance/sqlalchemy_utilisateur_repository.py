@@ -46,3 +46,8 @@ class SQLAlchemyUtilisateurRepository(UtilisateurRepository):
         if utilisateur_db:
             return Utilisateur.model_validate(utilisateur_db)
         return None
+    
+    async def lister_tout_les_utilisateurs(self) -> list[Utilisateur]: 
+        result = await self.session.execute(select(UtilisateurDB))
+        utilisateurs_db = result.scalars().all()
+        return [Utilisateur.model_validate(user_db) for user_db in utilisateurs_db]
