@@ -7,7 +7,7 @@ class RecupererUnLivre:
         """
         Initialise le cas d'utilisation pour récupérer un livre.
         """
-        self.livre_repository = livre_repository
+        self.livre_repository = livre_repository 
         pass
 
     async def executer(self, livre_id: UUID) -> Livre | None : 

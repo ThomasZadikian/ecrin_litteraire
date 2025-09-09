@@ -36,3 +36,13 @@ class SQLAlchemyUtilisateurRepository(UtilisateurRepository):
         )
         self.session.add(utilisateur_db)
         await self.session.flush()
+
+    async def trouver_un_utilisateur_par_id(self, id) -> Utilisateur | None: 
+        result = await self.session.execute(
+            select(UtilisateurDB).where(UtilisateurDB.id == id)
+        )
+        utilisateur_db = result.scalar_one_or_none()
+
+        if utilisateur_db:
+            return Utilisateur.model_validate(utilisateur_db)
+        return None
