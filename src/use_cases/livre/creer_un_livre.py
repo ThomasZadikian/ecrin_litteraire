@@ -1,8 +1,8 @@
 import uuid
 from datetime import datetime
 
-from domain.model.livre import Livre, LivreCreationSchema
-from domain.repository.livre_repository import LivreRepository
+from src.domain.model.livre import Livre, LivreCreationSchema
+from src.domain.repository.livre_repository import LivreRepository
 
 class CreerUnLivre:
     def __init__ (self, livre_repository: LivreRepository):

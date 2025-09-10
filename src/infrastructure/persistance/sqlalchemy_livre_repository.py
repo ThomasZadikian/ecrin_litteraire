@@ -2,8 +2,8 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from domain.model.livre import Livre
-from domain.repository.livre_repository import LivreRepository
+from src.domain.model.livre import Livre
+from src.domain.repository.livre_repository import LivreRepository
 from src.infrastructure.persistance.models import LivreDB
 
 class SQLAlchemyLivreRepository(LivreRepository):

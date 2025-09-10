@@ -1,5 +1,5 @@
-from domain.model.utilisateur import Utilisateur
-from domain.repository.utilisateur_repository import UtilisateurRepository
+from src.domain.model.utilisateur import Utilisateur
+from src.domain.repository.utilisateur_repository import UtilisateurRepository
 from src.infrastructure.security import verifier_mot_de_passe
 
 class AuthentifierUtilisateur:

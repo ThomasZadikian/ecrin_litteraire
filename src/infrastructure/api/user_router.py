@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.use_cases.utilisateurs.creer_utilisateur import CreerUtilisateur
-from domain.repository.utilisateur_repository import UtilisateurRepository
-from domain.model.utilisateur import Utilisateur, UtilisateurCreationSchema
+from src.domain.repository.utilisateur_repository import UtilisateurRepository
+from src.domain.model.utilisateur import Utilisateur, UtilisateurCreationSchema
 from src.use_cases.utilisateurs.recupere_un_utilisateur import RecupererUnUtilisateur
 from src.use_cases.utilisateurs.lister_tout_les_utilisateurs import ListerToutLesUtilisateurs
 from src.infrastructure.persistance.database import get_session
@@ -45,3 +45,12 @@ async def lister_tout_les_utilisateurs(
     use_case = ListerToutLesUtilisateurs(utilisateur_repository)
     utilisateurs = await use_case.executer()
     return utilisateurs
+
+@router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def supprimer_un_utilisateur(
+    utilisateur_id: str, 
+    utilisateur_repository: UtilisateurRepository = Depends(get_utilisateur_repository)
+):
+    await utilisateur_repository.supprimer_un_utilisateur(utilisateur_id)
+    await utilisateur_repository.session.commit()
+    return None

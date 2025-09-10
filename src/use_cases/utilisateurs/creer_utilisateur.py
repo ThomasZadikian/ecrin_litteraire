@@ -1,8 +1,8 @@
 import uuid
 from datetime import datetime
 
-from domain.model.utilisateur import Utilisateur
-from domain.repository.utilisateur_repository import UtilisateurRepository
+from src.domain.model.utilisateur import Utilisateur
+from src.domain.repository.utilisateur_repository import UtilisateurRepository
 
 class CreerUtilisateur: 
     def __init__(self, utilisateur_repository: UtilisateurRepository):

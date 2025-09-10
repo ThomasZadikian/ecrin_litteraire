@@ -1,5 +1,5 @@
-from domain.model.livre import Livre
-from domain.repository.livre_repository import LivreRepository
+from src.domain.model.livre import Livre
+from src.domain.repository.livre_repository import LivreRepository
 from uuid import UUID
 
 class RecupererUnLivre:

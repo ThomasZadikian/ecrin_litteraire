@@ -1,6 +1,6 @@
 from uuid import UUID
-from domain.model.utilisateur import Utilisateur
-from domain.repository.utilisateur_repository import UtilisateurRepository
+from src.domain.model.utilisateur import Utilisateur
+from src.domain.repository.utilisateur_repository import UtilisateurRepository
 
 class RecupererUnUtilisateur: 
     def __init__(self, utilisateur_repository: UtilisateurRepository): 

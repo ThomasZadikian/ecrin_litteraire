@@ -17,3 +17,7 @@ class UtilisateurRepository(ABC):
     @abstractmethod 
     async def lister_tout_les_utilisateurs(self) -> list[Utilisateur]:
         pass
+
+    @abstractmethod
+    async def supprimer_un_utilisateur(self, utilisateur_id) -> None: 
+        pass

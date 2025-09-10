@@ -1,8 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from domain.model.utilisateur import Utilisateur
-from domain.repository.utilisateur_repository import UtilisateurRepository
+from src.domain.model.utilisateur import Utilisateur
+from src.domain.repository.utilisateur_repository import UtilisateurRepository
 from src.infrastructure.persistance.models import UtilisateurDB
 
 class SQLAlchemyUtilisateurRepository(UtilisateurRepository):
@@ -51,3 +51,11 @@ class SQLAlchemyUtilisateurRepository(UtilisateurRepository):
         result = await self.session.execute(select(UtilisateurDB))
         utilisateurs_db = result.scalars().all()
         return [Utilisateur.model_validate(user_db) for user_db in utilisateurs_db]
+    
+    async def supprimer_un_utilisateur(self, utilisateur_id)-> None: 
+        utilisateur_db =await self.session.get(UtilisateurDB, utilisateur_id)
+        if utilisateur_db: 
+            await self.session.delete(utilisateur_db)
+            await self.session.flush()
+        else : 
+            return None
