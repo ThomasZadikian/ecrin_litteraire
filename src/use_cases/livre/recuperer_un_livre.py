@@ -1,5 +1,5 @@
-from src.domain.livre import Livre
-from src.domain.livre_repository import LivreRepository
+from src.domain.model.livre import Livre
+from src.domain.repository.livre_repository import LivreRepository
 from uuid import UUID
 
 class RecupererUnLivre:
@@ -7,7 +7,7 @@ class RecupererUnLivre:
         """
         Initialise le cas d'utilisation pour récupérer un livre.
         """
-        self.livre_repository = livre_repository
+        self.livre_repository = livre_repository 
         pass
 
     async def executer(self, livre_id: UUID) -> Livre | None : 

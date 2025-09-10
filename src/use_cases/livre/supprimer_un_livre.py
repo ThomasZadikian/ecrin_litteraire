@@ -1,5 +1,5 @@
 from uuid import UUID
-from src.domain.livre_repository import LivreRepository
+from src.domain.repository.livre_repository import LivreRepository
 from src.domain.exceptions import LivreNotFoundError
 
 class SupprimerUnLivre:

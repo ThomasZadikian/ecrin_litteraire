@@ -2,9 +2,9 @@ import pytest
 import uuid
 from datetime import datetime
 
-from use_cases.recuperer_un_livre import RecupererUnLivre
-from infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
-from domain.livre import Livre
+from src.use_cases.livre.recuperer_un_livre import RecupererUnLivre
+from src.infrastructure.persistance.inMemory_repository.in_memory_livre_repository import InMemoryLivreRepository
+from src.domain.model.livre import Livre
 
 @pytest.mark.asyncio
 

@@ -1,8 +1,8 @@
 import uuid
 from datetime import datetime
 
-from src.domain.livre import Livre, LivreCreationSchema
-from src.domain.livre_repository import LivreRepository
+from src.domain.model.livre import Livre, LivreCreationSchema
+from src.domain.repository.livre_repository import LivreRepository
 
 class CreerUnLivre:
     def __init__ (self, livre_repository: LivreRepository):
@@ -17,4 +17,4 @@ class CreerUnLivre:
             date_publication=datetime.now()
         )
         await self.livre_repository.sauvegarder(nouveau_livre)
-        return nouveau_livre
+        return nouveau_livre 
