@@ -7,7 +7,7 @@ from src.domain.model.utilisateur import Utilisateur, UtilisateurCreationSchema
 from src.use_cases.utilisateurs.recupere_un_utilisateur import RecupererUnUtilisateur
 from src.use_cases.utilisateurs.lister_tout_les_utilisateurs import ListerToutLesUtilisateurs
 from src.infrastructure.persistance.database import get_session
-from src.infrastructure.persistance.sqlalchemy_utilisateur_repository import SQLAlchemyUtilisateurRepository
+from src.infrastructure.persistance.sqlalchemy_repository.sqlalchemy_utilisateur_repository import SQLAlchemyUtilisateurRepository
 
 router = APIRouter(
     prefix="/users",

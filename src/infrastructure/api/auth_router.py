@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.use_cases.utilisateurs.authentifier_utilisateur import AuthentifierUtilisateur
 from src.infrastructure.persistance.database import get_session
-from src.infrastructure.persistance.sqlalchemy_utilisateur_repository import SQLAlchemyUtilisateurRepository
+from src.infrastructure.persistance.sqlalchemy_repository.sqlalchemy_utilisateur_repository import SQLAlchemyUtilisateurRepository
 from src.infrastructure.security import creer_access_token
 
 router = APIRouter(tags=["Authentification"])

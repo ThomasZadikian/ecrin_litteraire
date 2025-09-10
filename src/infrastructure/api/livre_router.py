@@ -11,7 +11,7 @@ from src.domain.model.livre import LivreUpdateSchema
 from src.use_cases.livre.mettre_a_jour_un_livre import MettreAJourUnLivre
 from src.use_cases.livre.supprimer_un_livre import SupprimerUnLivre
 from src.domain.exceptions import LivreNotFoundError
-from src.infrastructure.persistance.sqlalchemy_livre_repository import SQLAlchemyLivreRepository
+from src.infrastructure.persistance.sqlalchemy_repository.sqlalchemy_livre_repository import SQLAlchemyLivreRepository
 from src.infrastructure.persistance.database import get_session
 
 router = APIRouter(

@@ -1,6 +1,5 @@
 from uuid import UUID
 from domain.model.utilisateur import Utilisateur
-from domain.repository.utilisateur_repository import UtilisateurRepository
 
 class InMemoryUtilisateurRepository: 
     def __init__(self): 
@@ -17,3 +16,7 @@ class InMemoryUtilisateurRepository:
     
     async def lister_tout_les_utilisateurs(self) -> list[Utilisateur]: 
         return list(self.data.values())
+    
+    async def supprimer_un_utilisateur(self, utilisateur_id: UUID) -> None: 
+        if utilisateur_id in self.data :
+            del self.data[utilisateur_id]

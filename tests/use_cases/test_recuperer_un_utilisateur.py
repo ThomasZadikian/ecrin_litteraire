@@ -3,7 +3,7 @@ import pytest
 
 from src.domain.model.utilisateur import Utilisateur
 from src.use_cases.utilisateurs.recupere_un_utilisateur import RecupererUnUtilisateur
-from src.infrastructure.persistance.in_memory_utilisateur_repository import InMemoryUtilisateurRepository
+from src.infrastructure.persistance.inMemory_repository.in_memory_utilisateur_repository import InMemoryUtilisateurRepository
 
 @pytest.mark.asyncio
 

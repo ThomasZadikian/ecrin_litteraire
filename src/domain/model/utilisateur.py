@@ -9,14 +9,6 @@ class Utilisateur(BaseModel):
     nom_de_famille : str
     date_de_naissance : str
     email : str
-
-    def __init__(self, id, email, mot_de_passe_hash):
-        self.id = id
-        self.email = email
-        self.mot_de_passe_hash = mot_de_passe_hash
-
-    def __repr__(self):
-        return f"<Utilisateur(id='{self.id}', email='{self.email}')>"
     
 class UtilisateurCreationSchema(BaseModel): 
     prenom : str

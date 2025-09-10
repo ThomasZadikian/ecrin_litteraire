@@ -3,7 +3,7 @@ import uuid
 from datetime import datetime
 
 from src.use_cases.livre.recuperer_un_livre import RecupererUnLivre
-from src.infrastructure.persistance.in_memory_livre_repository import InMemoryLivreRepository
+from src.infrastructure.persistance.inMemory_repository.in_memory_livre_repository import InMemoryLivreRepository
 from src.domain.model.livre import Livre
 
 @pytest.mark.asyncio
