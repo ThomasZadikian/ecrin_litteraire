@@ -16,3 +16,6 @@ class UtilisateurCreationSchema(BaseModel):
     date_de_naissance : str
     email : str
     mot_de_passe : str 
+
+class UtilisateurUpdateSchema(BaseModel): 
+    email : str | None = None

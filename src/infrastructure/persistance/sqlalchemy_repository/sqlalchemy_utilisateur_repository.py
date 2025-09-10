@@ -1,7 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+from uuid import UUID
 
-from src.domain.model.utilisateur import Utilisateur
+from src.domain.model.utilisateur import Utilisateur, UtilisateurUpdateSchema
 from src.domain.repository.utilisateur_repository import UtilisateurRepository
 from src.infrastructure.persistance.models import UtilisateurDB
 
@@ -59,3 +60,18 @@ class SQLAlchemyUtilisateurRepository(UtilisateurRepository):
             await self.session.flush()
         else : 
             return None
+        
+    async def modifier_un_utilisateur(self, utilisateur: Utilisateur, utilisateur_id: UUID) -> None: 
+        try :
+            utilisateur_db = await self.session.get(UtilisateurDB, utilisateur_id)
+            if not utilisateur_db : 
+                raise ValueError(f"Utilisateur avec l'id {utilisateur.id} n'existe pas")
+            
+            update_data = utilisateur.model_dump(exclude_unset=True)
+            for key, value in update_data.items():
+                setattr(utilisateur_db, key, value)
+                
+            self.session.add(utilisateur_db)
+        except Exception as e : 
+            await self.session.rollback()
+            raise e

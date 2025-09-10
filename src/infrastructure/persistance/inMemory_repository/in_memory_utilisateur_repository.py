@@ -20,3 +20,7 @@ class InMemoryUtilisateurRepository:
     async def supprimer_un_utilisateur(self, utilisateur_id: UUID) -> None: 
         if utilisateur_id in self.data :
             del self.data[utilisateur_id]
+
+    async def modifier_un_utilisateur(self, utilisateur: Utilisateur, utilisateur_id: UUID)->None: 
+        if utilisateur_id in self.data : 
+            self.data[utilisateur_id] = utilisateur
