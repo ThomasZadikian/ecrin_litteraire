@@ -6,4 +6,5 @@ class Emotion(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: UUID
     nom: str
+    comportement: str
     date_modification: datetime

@@ -24,7 +24,6 @@ class Role(Base):
     nom: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
     date_creation: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"))
     date_modification: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"))
-    utilisateurs: Mapped[list["Utilisateur"]] = relationship(back_populates="role")
 
 class Utilisateur(Base):
     """
@@ -68,8 +67,6 @@ class Livre(Base):
 
     auteur_id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("utilisateurs.id"))
     auteur: Mapped["Utilisateur"] = relationship(back_populates="livres")
-    chapitres: Mapped[list["Chapitre"]] = relationship(back_populates="livre", cascade="all, delete-orphan")
-    commentaires: Mapped[list["Commentaire"]] = relationship(back_populates="livre", cascade="all, delete-orphan")
     genres: Mapped[list["Genre"]] = relationship(
         secondary=livres_genres_association_table, back_populates="livres"
     )
@@ -113,9 +110,6 @@ class Genre(Base):
     id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     nom: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
     
-    livres: Mapped[list["Livre"]] = relationship(
-        secondary=livres_genres_association_table, back_populates="genres"
-    )
 
 class Chatbot(Base):
     """
@@ -156,4 +150,5 @@ class Emotion(Base):
     __tablename__ = "emotions"
     id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     nom: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
+    comportement: Mapped[str] = mapped_column(String(250), nullable=False)
     date_modification: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"))

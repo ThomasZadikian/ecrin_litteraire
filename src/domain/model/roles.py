@@ -8,7 +8,6 @@ class Role(BaseModel):
     nom: str
     date_creation: datetime
     date_modification: datetime
-    utilisateur: UUID
 
 class RoleCreateSchema(BaseModel): 
     nom: str

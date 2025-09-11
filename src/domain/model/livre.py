@@ -3,7 +3,6 @@ from uuid import UUID
 from datetime import datetime
 
 from src.domain.model.utilisateur import Utilisateur
-from src.domain.model.chapitre import Chapitre
 from src.domain.model.commentaire import Commentaire
 from src.domain.model.genre import Genre
 
@@ -18,8 +17,6 @@ class Livre(BaseModel):
     date_de_modification: datetime
     auteur_id: UUID
     auteur: Utilisateur
-    chapitre: list[Chapitre]
-    commentaire: list[Commentaire]
     genre: list[Genre]
 
 class LivreCreationSchema(BaseModel):
