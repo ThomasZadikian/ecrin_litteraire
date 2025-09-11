@@ -5,6 +5,7 @@ from datetime import datetime
 from src.domain.model.livre import Livre
 
 class Chapitre(BaseModel): 
+    model_config = ConfigDict(from_attributes=True)
     id: UUID
     titre: str
     contenu: str

@@ -6,6 +6,7 @@ from src.domain.model.livre import Livre
 from src.domain.model.utilisateur import Utilisateur
 
 class Commentaire(BaseModel): 
+    model_config = ConfigDict(from_attributes=True)
     id: UUID
     contenu: str
     date_creation: datetime
