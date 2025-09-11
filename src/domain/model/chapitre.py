@@ -1,0 +1,22 @@
+from pydantic import BaseModel, ConfigDict
+from uuid import UUID
+from datetime import datetime
+
+from src.domain.model.livre import Livre
+
+class Chapitre(BaseModel): 
+    id: UUID
+    titre: str
+    contenu: str
+    numero_chapitre: int
+    date_modification: datetime
+    livre_id: UUID
+    livre: Livre
+
+class CreationChapitreSchema(BaseModel): 
+    contenu: str
+    numero_chapitre: int
+
+class ChapitreUpdateSchema(BaseModel): 
+    contenu: str | None = None
+    numero_chapitre: int | None = None
