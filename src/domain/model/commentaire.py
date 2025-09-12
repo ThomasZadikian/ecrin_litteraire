@@ -16,6 +16,7 @@ class Commentaire(BaseModel):
 
 class CommentaireCreationSchema(BaseModel): 
     contenu: str
+    date_creation: datetime
 
 class CommentaireUpdateSchema(BaseModel): 
     contenu: str | None = None

@@ -1,5 +1,6 @@
 from src.domain.model.livre import Livre
 from src.domain.repository.livre_repository import LivreRepository
+from src.domain.model.utilisateur import Utilisateur
 from uuid import UUID
 
 class RecupererUnLivre:
@@ -25,7 +26,7 @@ class RecupererLivreParAuteur:
         self.livre_repository = livre_repository
         pass
     
-    async def executer(self, auteur_name : str) -> list[Livre] | None:
+    async def executer(self, auteur_name : Utilisateur) -> list[Livre] | None:
         """
         Args:
             auteur_name (str): Le nom de l'auteur dont on veut récupérer les livres.

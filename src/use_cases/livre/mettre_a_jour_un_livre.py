@@ -8,7 +8,7 @@ class MettreAJourUnLivre:
         self.livre_repository = livre_repository
 
     async def executer(self, livre_id: UUID, livre_data: LivreUpdateSchema) -> Livre | None:
-        livre = await self.livre_repository.trouver_par_id(livre_id)
+        livre = await self.livre_repository.trouver_par_id(livre_id) 
         if not livre:
             return None
 

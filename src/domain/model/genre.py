@@ -6,6 +6,9 @@ from uuid import UUID
 class GenreCreationSchema(BaseModel): 
     nom: str
 
+class GenreUpdateSchema(BaseModel):
+    nom:str
+
 class Genre(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: UUID

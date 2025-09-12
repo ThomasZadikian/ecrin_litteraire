@@ -9,6 +9,11 @@ class GenreRepository(ABC):
         pass
 
     @abstractmethod
-    def recuperer_un_genre(self, genre_id: UUID) -> Genre | None: 
+    def trouver_par_id(self, genre_id: UUID) -> Genre | None: 
         """Récupère un genre par son identifiant."""
+        pass
+
+    @abstractmethod
+    def mettre_a_jour(self, genre: Genre) -> Genre | None: 
+        """ Met à jour le nom d'un genre """
         pass
