@@ -1,9 +1,8 @@
+from __future__ import annotations
+
 from pydantic import BaseModel, ConfigDict
 from uuid import UUID
 from datetime import datetime
-
-from src.domain.model.livre import Livre
-from src.domain.model.utilisateur import Utilisateur
 
 class Commentaire(BaseModel): 
     model_config = ConfigDict(from_attributes=True)
@@ -11,9 +10,9 @@ class Commentaire(BaseModel):
     contenu: str
     date_creation: datetime
     auteur_id: UUID
-    auteur: Utilisateur
+    auteur: 'Utilisateur'
     livre_id: UUID
-    livre: Livre
+    livre: 'Livre'
 
 class CommentaireCreationSchema(BaseModel): 
     contenu: str

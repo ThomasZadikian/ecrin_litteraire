@@ -1,5 +1,4 @@
 import uuid
-from datetime import datetime,date 
 from typing import Optional
 
 from src.domain.model.genre import Genre

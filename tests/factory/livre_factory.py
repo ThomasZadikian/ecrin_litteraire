@@ -1,15 +1,13 @@
 import uuid
-from datetime import datetime, date
+from datetime import datetime
 from typing import Optional
 from src.domain.model.livre import Livre
 from src.domain.model.utilisateur import Utilisateur
 from src.domain.model.genre import Genre
+
 from tests.factory.user_factory import create_utilisateur
-from tests.factory.genre_factory import create_genre
 
-mock_user: Utilisateur = create_utilisateur()
-mock_genre : Genre = create_genre()
-
+user = create_utilisateur()
 
 def create_livre(
     id: Optional[uuid.UUID] = None,
@@ -18,9 +16,9 @@ def create_livre(
     date_publication: datetime = datetime(2023, 1, 1),
     date_d_ajout: datetime = datetime(2023, 1, 1),
     date_de_modification: datetime = datetime(2023, 1, 1),
-    auteur_id: uuid.UUID = mock_user.id,
-    auteur: Utilisateur = mock_user,
-    genre: list[Genre] = [mock_genre],
+    auteur_id: Optional[uuid.UUID] = None,
+    auteur = user,
+    genre: Optional[list[Genre]] = None,
 ) ->Livre :
     """
     Crée une instance de l'objet Livre pour les tests unitaires.

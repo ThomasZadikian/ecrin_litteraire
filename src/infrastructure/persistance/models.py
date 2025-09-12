@@ -27,25 +27,24 @@ class Role(Base):
 
 class Utilisateur(Base):
     """
-    Modèle de la table 'utilisateurs'.
-    C'est le cœur de l'application, l'entité centrale.
+    Modèle de la table 'utilisateurs' pour la base de données.
     """
     __tablename__ = "utilisateurs"
     id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    prenom: Mapped[str] = mapped_column(String(50), nullable=True)
-    nom_de_famille: Mapped[str] = mapped_column(String(50), nullable=True)
+    prenom: Mapped[str] = mapped_column(String(50), nullable=False)
+    nom_de_famille: Mapped[str] = mapped_column(String(50), nullable=False)
     email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     mot_de_passe_hache: Mapped[str] = mapped_column(String(255), nullable=False)
     avatar: Mapped[str] = mapped_column(String(255), nullable=True)
+    date_de_naissance: Mapped[datetime] = mapped_column(String, nullable=True)
     date_de_creation_du_compte: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"))
+    date_modification: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"), onupdate=text("now()"))
     cgu: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     rgpd: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     cookies: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
-    date_modification: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"))
 
     livres: Mapped[list["Livre"]] = relationship(back_populates="auteur")
     commentaires: Mapped[list["Commentaire"]] = relationship(back_populates="auteur")
-    
     auteur_prefere_id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("utilisateurs.id"), nullable=True)
     chatbot_prefere_id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("chatbots.id"), nullable=True)
     role_id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("roles.id"), nullable=False, default=text("uuid_generate_v4()"))

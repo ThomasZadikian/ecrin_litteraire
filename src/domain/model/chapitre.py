@@ -1,8 +1,8 @@
+from __future__ import annotations
+
 from pydantic import BaseModel, ConfigDict
 from uuid import UUID
 from datetime import datetime
-
-from src.domain.model.livre import Livre
 
 class Chapitre(BaseModel): 
     model_config = ConfigDict(from_attributes=True)
@@ -12,7 +12,7 @@ class Chapitre(BaseModel):
     numero_chapitre: int
     date_modification: datetime
     livre_id: UUID
-    livre: Livre
+    livre: 'Livre'
 
 class CreationChapitreSchema(BaseModel): 
     contenu: str

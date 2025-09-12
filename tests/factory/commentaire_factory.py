@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime, date, timezone
+from datetime import datetime
 from typing import Optional
 from src.domain.model.utilisateur import Utilisateur
 from src.domain.model.livre import Livre
@@ -15,9 +15,9 @@ def create_commentaire(
         contenu: str = "Commentaire de test", 
         date_creation: datetime = datetime(2025, 11, 9),
         auteur_id: uuid.UUID = mock_utilisateur.id,
-        auteur : Utilisateur = mock_utilisateur,
-        livre_id: uuid.UUID = mock_livre.id,
-        livre : Livre = mock_livre
+        auteur : Optional[Utilisateur] = None,
+        livre_id: Optional[uuid.UUID] = None,
+        livre : Optional[Livre] = None
 ) -> Commentaire : 
     """
     Crée une instance de l'objet Commentaire pour les tests unitaires.

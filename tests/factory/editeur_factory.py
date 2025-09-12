@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime, date, timezone
+from datetime import datetime
 from typing import Optional
 
 from src.domain.model.editeur import Editeur
