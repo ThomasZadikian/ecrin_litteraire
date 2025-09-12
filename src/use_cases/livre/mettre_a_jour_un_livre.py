@@ -1,4 +1,5 @@
 from uuid import UUID
+from datetime import datetime
 from src.domain.model.livre import Livre, LivreUpdateSchema
 from src.domain.repository.livre_repository import LivreRepository
 
@@ -14,7 +15,9 @@ class MettreAJourUnLivre:
         update_data = livre_data.model_dump(exclude_unset=True)
         for key, value in update_data.items():
             setattr(livre, key, value)
-            
+                        
+        update_data['date_de_modification'] = datetime.now()
+        
         await self.livre_repository.mettre_a_jour(livre)
         
         livre_a_jour = await self.livre_repository.trouver_par_id(livre_id)

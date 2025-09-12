@@ -1,39 +1,31 @@
-import uuid
+from uuid import UUID
 from datetime import datetime
 from typing import Optional
-from src.domain.model.livre import Livre
+from src.domain.model.livre import LivreCreationSchema
 from src.domain.model.utilisateur import Utilisateur
 from src.domain.model.genre import Genre
+from src.domain.model.livre import Livre
+from src.domain.model.commentaire import Commentaire
+from src.domain.model.roles import Role
 
-from tests.factory.user_factory import create_utilisateur
-
-user = create_utilisateur()
+Utilisateur.model_rebuild() 
+Livre.model_rebuild()
+Commentaire.model_rebuild()
+Role.model_rebuild()
+Genre.model_rebuild()
 
 def create_livre(
-    id: Optional[uuid.UUID] = None,
-    titre: str = "Livre",
-    contenu: str = "Je suis un contenu de livre",
-    date_publication: datetime = datetime(2023, 1, 1),
-    date_d_ajout: datetime = datetime(2023, 1, 1),
-    date_de_modification: datetime = datetime(2023, 1, 1),
-    auteur_id: Optional[uuid.UUID] = None,
-    auteur = user,
-    genre: Optional[list[Genre]] = None,
-) ->Livre :
+    titre: str = "Titre du Livre",
+    contenu_pour_majeur: bool = False,
+    date_publication: datetime = datetime.now(),
+
+
+) ->LivreCreationSchema :
     """
     Crée une instance de l'objet Livre pour les tests unitaires.
     """
-    if id is None:
-        id = uuid.uuid4()
-        
-    return Livre(
-        id=id,
-        titre=titre,
-        contenu=contenu,
-        date_publication=date_publication,
-        date_d_ajout=date_d_ajout,
-        date_de_modification=date_de_modification,
-        auteur_id=auteur_id,
-        auteur=auteur,
-        genre=genre,
+    return LivreCreationSchema(
+        titre = titre,
+        contenu_pour_majeur = contenu_pour_majeur,
+        date_publication = date_publication,
     )

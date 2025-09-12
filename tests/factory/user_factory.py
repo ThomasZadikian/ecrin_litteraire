@@ -8,7 +8,7 @@ from src.domain.model.commentaire import Commentaire
 from src.domain.model.roles import Role
 from src.domain.model.genre import Genre
 
-Utilisateur.model_rebuild()
+Utilisateur.model_rebuild() 
 Livre.model_rebuild()
 Commentaire.model_rebuild()
 Role.model_rebuild()

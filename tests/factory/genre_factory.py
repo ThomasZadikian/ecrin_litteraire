@@ -1,13 +1,11 @@
 import uuid
 from typing import Optional
 
-from src.domain.model.genre import Genre
+from src.domain.model.genre import GenreCreationSchema
 
 def create_genre(
-    id: Optional[uuid.UUID] = None,
-    nom: str = "Genre"
-) -> Genre:
-    return Genre(
-        id=id or uuid.uuid4(),
+    nom: str = "Genre de test"
+) -> GenreCreationSchema:
+    return GenreCreationSchema(
         nom=nom
     )

@@ -35,3 +35,4 @@ async def test_mettre_a_jour_un_utilisateur():
     assert utilisateur_recuperer.email == "modification.test"
     assert utilisateur_recuperer.auteur_prefere_id == nouvel_auteur_prefere
     assert utilisateur_recuperer.chatbot_prefere_id == nouveau_chatbot_prefere
+    assert utilisateur_creer.date_de_creation_du_compte < utilisateur_recuperer.date_de_modification
