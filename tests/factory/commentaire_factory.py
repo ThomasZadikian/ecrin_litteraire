@@ -12,7 +12,7 @@ mock_livre : Livre = create_livre()
 
 def create_commentaire(
         contenu: str = "Commentaire de test", 
-        date_creation: datetime = datetime(2025, 11, 9),
+        date_creation: datetime = datetime.now(),
 ) -> CommentaireCreationSchema : 
     """
     Crée une instance de l'objet Commentaire pour les tests unitaires.

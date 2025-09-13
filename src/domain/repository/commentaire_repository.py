@@ -2,7 +2,7 @@ from uuid import UUID
 from abc import ABC, abstractmethod
 from datetime import datetime 
 
-from src.domain.model.commentaire import Commentaire
+from src.domain.model.commentaire import Commentaire, CommentaireUpdateSchema
 
 class CommentaireRepository: 
     @abstractmethod
@@ -13,4 +13,12 @@ class CommentaireRepository:
     @abstractmethod
     async def trouver_par_id(self, commentaire_id: UUID) -> Commentaire: 
         """ Trouver un commentaire avec un ID """
+        pass
+
+    @abstractmethod
+    async def mettre_a_jour(
+        self, 
+        commentaire_id: UUID, 
+        commentaire_modifier: CommentaireUpdateSchema)-> Commentaire:
+        """Modifier un commentaire"""
         pass

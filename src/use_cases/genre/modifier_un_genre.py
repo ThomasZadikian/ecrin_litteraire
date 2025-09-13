@@ -14,7 +14,7 @@ class ModifierUnGenre:
         
         update_data = genre_data.model_dump(exclude_unset=True)
         for key, value in update_data.items():
-            setattr(genre, key, value)
+            setattr(genre, key, value) 
 
         genre_a_jour = await self.genre_repository.mettre_a_jour(genre)
         return genre_a_jour
