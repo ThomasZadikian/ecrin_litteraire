@@ -16,4 +16,3 @@ class RoleCreateSchema(BaseModel):
 
 class RoleUpdateSchema(BaseModel): 
     nom: str | None = None
-    date_modification: datetime
