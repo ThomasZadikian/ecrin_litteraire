@@ -18,7 +18,6 @@ class CommentaireRepository:
     @abstractmethod
     async def mettre_a_jour(
         self, 
-        commentaire_id: UUID, 
         commentaire_modifier: CommentaireUpdateSchema)-> Commentaire:
         """Modifier un commentaire"""
         pass

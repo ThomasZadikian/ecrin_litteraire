@@ -14,7 +14,8 @@ class CreerUnCommentaire:
             self, 
             commentaire_data: CommentaireCreationSchema,
             auteur: Utilisateur, 
-            livre: Livre) -> Commentaire: 
+            livre: Livre
+            ) -> Commentaire: 
         nouveau_commentaire= Commentaire(
             id = uuid.uuid4(),
             contenu = commentaire_data.contenu, 

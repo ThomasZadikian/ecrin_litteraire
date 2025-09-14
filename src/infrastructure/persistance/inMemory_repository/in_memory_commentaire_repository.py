@@ -13,6 +13,6 @@ class InMemoryCommentaireRepository:
     
     async def mettre_a_jour(
             self, 
-            commentaire: Commentaire)-> Commentaire | None:
+            commentaire: CommentaireUpdateSchema)-> Commentaire | None:
          if commentaire.id in self.data:
             self.data[commentaire.id] = commentaire
