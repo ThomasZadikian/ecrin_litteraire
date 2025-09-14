@@ -119,8 +119,6 @@ class Chatbot(Base):
     id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     nom: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
     
-    utilisateurs: Mapped[list["Utilisateur"]] = relationship(back_populates="chatbot_prefere")
-
 class Persona(Base):
     """
     Modèle de la table 'personas'.
