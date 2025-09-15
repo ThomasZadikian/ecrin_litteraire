@@ -2,23 +2,17 @@ import uuid
 from datetime import datetime
 from typing import Optional
 
-from src.domain.model.emotion import Emotion
+from src.domain.model.emotion import EmotionCreationSchema
 
 def create_emotion(
-        id: Optional[uuid.UUID] = None,
-        nom: str = "Joie",
-        comportement: str = "Exprime la joie de manière chaleureuse et enthousiaste.",
-        date_modification: datetime = datetime(2025, 11, 9), 
-) -> Emotion:
+        nom: str = "Test",
+        comportement: str = "Tu es une emotion de test. Comporte toi comme un robot idiot.",
+) -> EmotionCreationSchema:
     """
     Crée une instance de l'objet Emotion pour les tests unitaires.
     """
-    if id is None:
-        id = uuid.uuid4()
-        
-    return Emotion(
-        id=id,
+
+    return EmotionCreationSchema(
         nom=nom,
-        comportement=comportement,
-        date_modification=date_modification
+        comportement=comportement
 )

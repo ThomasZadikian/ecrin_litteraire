@@ -4,6 +4,14 @@ from pydantic import BaseModel, ConfigDict
 from uuid import UUID
 from datetime import datetime
 
+class EmotionCreationSchema(BaseModel): 
+    nom: str
+    comportement: str
+
+class EmotionUpdateSchema(BaseModel):
+    nom: str
+    comportement: str
+
 class Emotion(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: UUID
