@@ -11,5 +11,5 @@ class RecupererUnUtilisateur:
         self, 
         utilisateur_id: UUID
         ): 
-        utilisateur = await self.utilisateur_repository.trouver_un_utilisateur_par_id(utilisateur_id)
+        utilisateur = await self.utilisateur_repository.trouver_par_id(utilisateur_id)
         return utilisateur

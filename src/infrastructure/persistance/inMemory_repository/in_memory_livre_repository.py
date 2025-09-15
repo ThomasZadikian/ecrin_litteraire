@@ -1,8 +1,7 @@
 from uuid import UUID
 from domain.model.livre import Livre
-from domain.repository.livre_repository import LivreRepository
 
-class InMemoryLivreRepository(LivreRepository):
+class InMemoryLivreRepository:
     """
     Implémentation en mémoire du repository, utilisée pour les tests.
     Toutes les méthodes doivent être asynchrones pour respecter l'interface.

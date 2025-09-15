@@ -1,0 +1,20 @@
+from __future__ import annotations
+
+from pydantic import BaseModel, ConfigDict
+from uuid import UUID
+from datetime import datetime
+
+class EmotionCreationSchema(BaseModel): 
+    nom: str
+    comportement: str
+
+class EmotionUpdateSchema(BaseModel):
+    nom: str
+    comportement: str
+
+class Emotion(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: UUID
+    nom: str
+    comportement: str
+    date_modification: datetime
